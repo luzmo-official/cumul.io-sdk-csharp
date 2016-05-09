@@ -1,0 +1,6 @@
+*.userprefs
+*.sudo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
