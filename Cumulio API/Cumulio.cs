@@ -1,16 +1,4 @@
-﻿/**
- * LICENSE info
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using Newtonsoft.Json;
@@ -22,8 +10,9 @@ using System.Threading.Tasks;
 namespace CumulioAPI
 {
 
-    class Cumulio
+    public class Cumulio
     {
+		public string app = "https://app.cumul.io";
         public string host = "https://api.cumul.io";
         public string port = "443";
         public string apiVersion = "0.1.0";
@@ -216,11 +205,18 @@ namespace CumulioAPI
 			return await _emit("data", "SEARCH", query);
         }
 
+		/* Embedding */
+
+		public String iframe(string dashboard, dynamic authorization)
+		{
+			return this.app + "/s/" + dashboard + "?key=" + authorization.id + "&token=" + authorization.token;
+		}
+
         /* Helpers */
 
 		private async Task<dynamic> _emit(string resource, string action, CumulioQuery query)
         {
-			query.uid = apiKey;
+			query.key = apiKey;
 			query.token = apiToken;
 			query.version = apiVersion;
 
@@ -238,7 +234,7 @@ namespace CumulioAPI
 				if (e.Response == null)
 					result = "{error: 'An unexpected error occurred. Please try again later!'}";
 				else
-					result = await (new StreamReader (e.Response.GetResponseStream ()).ReadToEndAsync ());
+					result = await (new StreamReader(e.Response.GetResponseStream()).ReadToEndAsync());
 				throw new CumulioException(JsonConvert.DeserializeObject(result));
 			}
         }
@@ -246,7 +242,7 @@ namespace CumulioAPI
 
 	class CumulioQuery
 	{
-		public string uid;
+		public string key;
 		public string token;
 		public string version;
 		public string action;

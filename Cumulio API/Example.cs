@@ -9,9 +9,7 @@ namespace CumulioAPI
 		public static void Main()
 		{
 			// Set the API key and token
-			string apiKey = "< API key >";
-			string apiToken = "< API token >";
-			Cumulio client = new Cumulio(apiKey, apiToken);
+			Cumulio client = new Cumulio("< Your API key >", "< Your API token >");
 			dynamic properties;
 			List<ExpandoObject> associations;
 

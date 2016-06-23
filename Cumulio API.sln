@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cumulio", "Cumulio API\Cumulio.csproj", "{B829795A-97E9-4B05-8245-0C64DE3F879D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmbeddedCumulio", "EmbeddedCumulio\EmbeddedCumulio.csproj", "{F38F8CAE-E996-4F5B-B1B0-93E05A07F57B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B829795A-97E9-4B05-8245-0C64DE3F879D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B829795A-97E9-4B05-8245-0C64DE3F879D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B829795A-97E9-4B05-8245-0C64DE3F879D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38F8CAE-E996-4F5B-B1B0-93E05A07F57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38F8CAE-E996-4F5B-B1B0-93E05A07F57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38F8CAE-E996-4F5B-B1B0-93E05A07F57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38F8CAE-E996-4F5B-B1B0-93E05A07F57B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
