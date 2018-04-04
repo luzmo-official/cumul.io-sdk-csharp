@@ -9,7 +9,7 @@ namespace CumulioAPI
 		public static void Main()
 		{
 			// Set the API key and token
-			Cumulio client = new Cumulio("< Your API key >", "< Your API token >");
+			Cumulio client = new Cumulio("05ff73fd-12ec-4805-bfbc-7e14188c1ced", "t9ctUEuvzr752gkH9ivYQ4I6fHNEu3yCLkleyy4gpGtGKKzJBexdrqUbtuKS2UhHKy7wzdjxCIbpm7zJrD0a3dGfgqWhww6d9FFoOOKOAZ7AfQh93nVW2SD0szP1lAGkecKLaygUwGjrUNIMMcw644");
 			dynamic properties;
 			List<ExpandoObject> associations;
 
@@ -20,61 +20,33 @@ namespace CumulioAPI
 
 				// Example 1: create a new dataset
 				properties = new ExpandoObject();
-				properties.type = "dataset";
-				properties.name = new {
-					en = "Burrito statistics",						
-					nl = "Burrito-statistieken"
+				properties.type = "temporary";
+				// User restrictions
+				properties.expiry = DateTime.Now.AddMinutes(5);
+				// Data & dashboard restrictions
+				properties.securables = new List<String> {
+					"4db23218-1bd5-44f9-bd2a-7e6051d69166",
+					"f335be80-b571-40a1-9eff-f642a135b826",
+					"1d5db81a-3f88-4c17-bb4c-d796b2093dac"
 				};
-				dynamic securable = client.create("securable", properties);
-				Console.WriteLine("Dataset created with ID " + securable.id);
-
-
-				// Example 2: update a dataset
-				properties = new ExpandoObject();
-				properties.description = new { nl = "Het aantal geconsumeerde burrito's per type" };
-				client.update("securable", (string) securable.id, properties);
-				Console.WriteLine("Dataset description updated");
-
-
-				// Example 3: create 2 columns
-				associations = new List<ExpandoObject>();
-				dynamic association = new ExpandoObject();
-				association.role = "Securable";
-				association.id = securable.id;
-				associations.Add(association);
-
-				properties = new ExpandoObject();
-				properties.type = "hierarchy";
-				properties.format = "";
-				properties.informat = "hierarchy";
-				properties.order = 0;
-				properties.name = new {
-					nl = "Type of burrito"
+				properties.filters = new List<dynamic> {
+					new {
+						clause = "where",
+						origin = "global",
+						securable_id = "4db23218-1bd5-44f9-bd2a-7e6051d69166",
+						column_id = "3e2b2a5d-9221-4a70-bf26-dfb85be868b8",
+						expression = "? = ?",
+						value = "Damflex"
+					}
 				};
-				client.create("column", properties, associations);
-				Console.WriteLine("Column #0 created and associated");
+				// Presentation options
+				properties.locale_id = "en";
+				properties.screenmode = "desktop";
 
-				properties = new ExpandoObject();
-				properties.type = "numeric";
-				properties.format = ",.0f";
-				properties.informat = "numeric";
-				properties.order = 1;
-				properties.name = new {
-					nl = "Burrito weight"
-				};
-				client.create("column", properties, associations);
-				Console.WriteLine("Column #1 created and associated");
-
-
-				// Example 1: push 2 data points to a (pre-existing) dataset
-				properties = new ExpandoObject();
-				properties.securable_id = securable.id;
-				properties.data = new List<List<String>> {
-					new List<String> { "sweet", "126" },
-					new List<String> { "sour", "352" }
-				};
-				client.create("data", properties);
-				Console.WriteLine("Data rows pushed");
+				dynamic authorization = client.create("authorization", properties);
+				Console.WriteLine(authorization);
+				Console.WriteLine(client.iframe("1d5db81a-3f88-4c17-bb4c-d796b2093dac", authorization));
+				//return View();
 
 			}
 			catch (CumulioException e) {
