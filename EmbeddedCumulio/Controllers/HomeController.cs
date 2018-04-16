@@ -14,7 +14,7 @@ namespace EmbeddedCumulio.Controllers
     {
 
       // 1. Connect to Cumul.io API
-      Cumulio client = new Cumulio ("05ff73fd-12ec-4805-bfbc-7e14188c1ced", "t9ctUEuvzr752gkH9ivYQ4I6fHNEu3yCLkleyy4gpGtGKKzJBexdrqUbtuKS2UhHKy7wzdjxCIbpm7zJrD0a3dGfgqWhww6d9FFoOOKOAZ7AfQh93nVW2SD0szP1lAGkecKLaygUwGjrUNIMMcw644");
+      Cumulio client = new Cumulio ("< Your API key >", "< Your API token >");
 
       // 2. Create a temporary authorization token
       dynamic properties = new ExpandoObject();
