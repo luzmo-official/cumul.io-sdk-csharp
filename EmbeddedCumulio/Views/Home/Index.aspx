@@ -24,7 +24,7 @@
 
       Cumulio.addDashboard({
         container: '#myDashboard'
-        , dashboardId: '<%= ViewData["dashboard_id"] %>'
+        , dashboardId: '<%= ViewData["dashboardId"] %>'
         , key: '<%= ViewData["key"] %>'
         , token: '<%= ViewData["token"] %>'
       });
