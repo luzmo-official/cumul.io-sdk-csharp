@@ -27,6 +27,8 @@ namespace CumulioAPI
 
     public Cumulio(string host, string port, string apiVersion, string apiKey, string apiToken)
     {
+      this.host = host;
+      this.port = port;
       this.apiKey = apiKey;
       this.apiToken = apiToken;
       this.apiVersion = apiVersion;
