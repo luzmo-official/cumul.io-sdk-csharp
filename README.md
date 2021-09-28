@@ -9,4 +9,4 @@ See the `EmbeddedCumulio` project to see an example of how to use the API to sec
 
 ## Documentation
 
-The API documentation (available services and methods) can be found [here](http://documentation.cumul.io/apidocs.html).
+The API documentation (available services and methods) can be found [here](https://developer.cumul.io/).
