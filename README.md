@@ -1,5 +1,11 @@
 # Cumul.io API
 
+## ⚠️⚠️ DEPRECATION NOTICE⚠️⚠️
+
+The library had been replaced by `LuzmoSDK. You can find the new package on the GitHub repo [luzmo-official/luzmo-sdk-csharp](https://github.com/luzmo-official/luzmo-sdk-csharp).
+
+---
+
 You can use this C# project to interact with the [Cumul.io](https://cumul.io) API in order to create, modify or delete datasets, dashboards or push new data into the platform in a programmatic way.
 
 ## Usage
